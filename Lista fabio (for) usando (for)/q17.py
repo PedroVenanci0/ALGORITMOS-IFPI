@@ -1,5 +1,6 @@
 # Leia N, calcule e escreva o valor de S.
 
+# (tabela)
 
 def main():
 

@@ -3,9 +3,15 @@
 
 def main():
 
+    print("""
+======================================
+>>> DESCOBRINDO O Maior Quadrado <<<
+======================================
+""")
+
     maior_numero = 0
 
-    numero_N = int(input('Informe um valor: '))
+    numero_N = int(input('>> DIGITE UM VALOR PARA A COMPARAÇÃO: '))
 
     for contador in range(1, numero_N):
 
@@ -19,7 +25,7 @@ def main():
 
                 maior_numero = valor
             
-    print (f'O maior quadrado menor ou igual a N é {maior_numero}')
+    print (f'\n>> O maior quadrado menor ou igual a {numero_N} é {maior_numero}\n')
 
 
 

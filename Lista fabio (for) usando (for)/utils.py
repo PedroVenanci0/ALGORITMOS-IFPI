@@ -23,7 +23,7 @@ def clear_screen():
     
 def aguarde():
     tempo_inicial = time.time()
-    tempo = 4
+    tempo = 2
     while time.time() - tempo_inicial < tempo:  
         for i in range(tempo + 1):  
             print("Aguarde" + "." * i, end="\r")  
@@ -31,7 +31,8 @@ def aguarde():
         print("Aguarde   ", end="\r")  
         time.sleep(0.5)  
 
-def tabela_de_cor(): 
+def tabela_de_cor():
+    
     cor = 'cor'
     print (f'''
    >>>> NÚMEROS PARA CORES DOS RESULTADOS <<<<
@@ -43,25 +44,6 @@ def tabela_de_cor():
            AZUL ESCURO  >>>        \033[34m{cor} = 34\033[m
            ROSA         >>>        \033[35m{cor} = 35\033[m
            AZUL CIANO   >>>        \033[36m{cor} = 36\033[m
+
 ''')
     
-def cor_cinza(argumento):
-    print (f'\033[30m{argumento}\033[m')
-
-def cor_vermelho(argumento):
-    print (f'\033[31m{argumento}\033[m')
-
-def cor_verde(argumento):
-    print (f'\033[32m{argumento}\033[m')
-
-def cor_amarelo(argumento):
-    print (f'\033[33m{argumento}\033[m')
-
-def cor_azuk_escuro(argumento):
-    print (f'\033[34m{argumento}\033[m')
-
-def cor_rosa(argumento):
-    return f'\033[35m{argumento}\033[m'
-
-def cor_ciano(argumento):
-    return f'\033[36m{argumento}\033[m'

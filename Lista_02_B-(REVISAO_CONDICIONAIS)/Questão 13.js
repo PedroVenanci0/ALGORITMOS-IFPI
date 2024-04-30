@@ -55,7 +55,6 @@ function Se_vc_eh_o_Assassino(telefonou, esteve_no_local, morava, devedor, traba
     }
 
 
-    
 
     if (provas === 0){
         console.log ("Inocente")

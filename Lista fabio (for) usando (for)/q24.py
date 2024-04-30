@@ -6,8 +6,14 @@
 # c) percentual de pessoas com salário de até R$ 1.000,00.
 
 def main():
+
+    print("""
+========================================================
+            >>> Pesquisa IBGE <<<<
+========================================================
+""")
     
-    numero_de_habitantes = int(input('Informe o número de habitantes: '))
+    numero_de_habitantes = int(input('>> Informe o número de habitantes: '))
     
     contador_habitantes_salario = 0
     contador_filhos = 0
@@ -17,9 +23,14 @@ def main():
     pessoas_de_menor_renda = 0
     
     for i in range(numero_de_habitantes):
-    
-        salario = float(input('Informe seu salario: '))
-        filhos = int(input('Informe o número de filhos: '))
+
+        print(f"""
+===========================
+  >> HABITANTE N° {i + 1} <<
+===========================
+""")
+        salario = float(input('>> Informe seu salario: '))
+        filhos = int(input('\n>> Informe o número de filhos: '))
         
         if salario <= 1000:
             
@@ -43,6 +54,5 @@ def main():
 - PERCENTUAL DE PESSOAS COM BAIXA RENDA  >>> \033[31m{percentual_renda_baixa:.0f}%\033[m 
 
 ========================================================
-
 ''')
 main()

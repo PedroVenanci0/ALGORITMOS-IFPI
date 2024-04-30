@@ -2,15 +2,21 @@
 # (0,1,1,2,3,5,8,...). O valor lido para N sempre será maior ou igual a 2.
 
 def main():
+
+    print("""
+===============================
+>>> SEQUÊNCIA DE FIBONACCI <<<
+===============================
+""")
     
-    numero_N = int(input('Digite o número de termos da sequência: '))
+    numero_N = int(input('\nDigite o número de termos da sequência: '))
     
     while numero_N < 2:
     
         if numero_N < 2:
             
-            print('Valor INVÁLIDO!! Tente novamente.')
-            numero_N = int(input('Digite o número de termos da sequência: '))
+            print('\nValor INVÁLIDO!! Tente novamente.')
+            numero_N = int(input('\nDigite o número de termos da sequência: '))
         
     primeiro_termo  = 0
     segundo_termo = 1
@@ -31,7 +37,7 @@ def main():
             
             ordem += " " 
 
-    print(ordem)
+    print(f'\n>> TERMOS FIBONACCI - {ordem}\n')
               
 
 main()

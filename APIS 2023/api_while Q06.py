@@ -1,3 +1,4 @@
+
 # [energia.js] Em 2021 o Brasil voltou a enfrentar crise na matriz energética devido ao baixo nível das águas nos reservatórios das hidrelétricas
 # brasileiras. Devido a isso os consumidores deverão arcar com custos extras (bandeira) para bancar outras matrizes energéticas, como usinas
 # termoelétricas. Neste mês de Junho a bandeira estabelecida pelo governo federal foi a Vermelha Patamar 2, que significa que a cada 100 KWh de
@@ -27,6 +28,7 @@
 # ICMS R$ 0,00
 # PIS/CONFIS
 # Taxa Iluminação R$ 0,00
+
 from utils import clear_screen
 def main():
 

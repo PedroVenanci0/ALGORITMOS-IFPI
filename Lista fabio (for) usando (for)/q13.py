@@ -1,11 +1,18 @@
 # 13. Leia N e uma lista de N números e escreva o maior número da lista.
 
+from utils import clear_screen
 
 def main():
 
-    tamanho_da_lista = int(input('Informe o valor correspondente ao tamnho da lista: '))
+    print("""
+========================
+   >> MAIOR NÚMERO <<
+========================
+""")
 
-    numero = float(input('Digite um numero: '))
+    tamanho_da_lista = int(input('>> Informe o tamanho da lista: '))
+
+    numero = float(input('\n>> Digite um numero: '))
 
     maior_numero = numero
 
@@ -13,7 +20,7 @@ def main():
 
     for contador in range(1, tamanho_da_lista):
 
-        numero = float(input('Digite um numero: '))
+        numero = float(input('\n>> Digite um numero: '))
 
         contador += 1
 
@@ -22,6 +29,8 @@ def main():
         if numero > maior_numero:
 
             maior_numero = numero
+        
+    clear_screen()
         
     print ('\n>>>>> Lista de números <<<<<<\n')
     print (lista)

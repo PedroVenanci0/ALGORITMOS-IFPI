@@ -2,6 +2,12 @@
 
 def main():
 
+    print("""
+==================================
+    >>> SEQUÊNCIA DE TERMOS <<<
+==================================
+""")
+
     numero_de_termos = int(input('Informe o número de termos: '))
 
     valor = 1
@@ -18,5 +24,5 @@ def main():
 
     ordem = ', '.join(sequencia)
 
-    print (f'A ordem de termos da sequência é (1, {ordem})')
+    print (f'\nA ordem de termos da sequência é (1, {ordem})\n')
 main()

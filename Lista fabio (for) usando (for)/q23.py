@@ -7,15 +7,21 @@
 
 def main():
     
-    numero_funcionario = int(input('Informe o número de funcionarios: '))
+    print("""
+=======================================
+        >>> FICHA SALARIAL <<<
+=======================================
+""")
+    
+    numero_funcionario = int(input('>> Informe o número de funcionarios: '))
     
     for i in range(numero_funcionario):
         
-        print ('\n========== INSERINDO INFORMAÇÕES ===================\n')
+        print (f'\n====== INSERINDO INFORMAÇÕES DO {i + 1}° FUNCIONARIO =======\n')
         
-        codigo = int(input('Informe o código do funcionario: '))
-        hrs_trabalhadas = int(input('Informe o número de horas trabalhadas: '))
-        numero_de_dependentes = int(input('Informe o número de dependentes do funcionario: '))
+        codigo = int(input('>> Informe o código de identificação: '))
+        hrs_trabalhadas = int(input('\n>> Informe o número de horas trabalhadas: '))
+        numero_de_dependentes = int(input('\n>> Informe o número de dependentes do funcionario: '))
         
         salario_bruto = (hrs_trabalhadas * 12 + numero_de_dependentes * 40)
         inss = (salario_bruto * 8.5/100)
@@ -25,7 +31,7 @@ def main():
         print(f"""
     
 ==============================================================
-            >>>>>>>>>> Seu Sálario <<<<<<<<<<<<<
+        >>>>>>>>>> {i + 1}° FUNCIONARIO <<<<<<<<<<<<<
 ==============================================================
             
 - O Salario BRUTO                     ----> \033[34m{salario_bruto:.2f}\033[m
@@ -33,10 +39,7 @@ def main():
 - Valor descontado pelo IR (5%)       ----> \033[31m{ir:.2f}\033[m
 - O Salario Liquido                   ----> \033[32m{salario_liquido:.2f}\033[m
             
-==============================================================\n
+==============================================================
 """)
         
-        
-        print()
-
 main()

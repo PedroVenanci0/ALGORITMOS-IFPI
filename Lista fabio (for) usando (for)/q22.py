@@ -3,10 +3,23 @@
 # numero de identificação e o peso do boi mais magro e do boi mais gordo.
 
 def main():
+
+    print("""
+========================
+>>> CONTROLE DO GADO <<<
+========================
+""")
     
     numero_de_fichas = int(input('Digite o número de fichas: '))
+
+    print(f"""
+============================
+       >> {1}° BOI <<
+============================
+""")
+        
     
-    nome = input('\nInforme o nome do boi: ') 
+    nome = input('Informe o nome do boi: ') 
     idetificacao = int(input('Informe o número de identificação: '))
     peso = int(input('Informe o peso do boi (kg): '))
     
@@ -22,8 +35,13 @@ def main():
     
     
     for i in range(1, numero_de_fichas):
-        
-        nome = input('\nInforme o nome do boi: ') 
+
+        print(f"""
+============================
+       >> {i + 1}° BOI << 
+============================
+""")
+        nome = input('Informe o nome do boi: ') 
         idetificacao = int(input('Informe o número de identificação: '))
         peso = int(input('Informe o peso do boi (kg): '))
         
@@ -42,20 +60,20 @@ def main():
     
     print(f'''
           
-                           >>>> É boi <<<<<
-          ===================================================\n
-          -------->        Boi mais PESADO          <-------\n
-          - NOME                    >>> {Nome_pesado}
-          - Número de identificação >>> \033[32m{idetificacao_mais_pesado}\033[m
-          - PESO                    >>> \033[31m{boi_mais_pesado}\033[m
+                >>>> É boi <<<<<
+===================================================\n
+-------->        Boi mais PESADO          <-------\n
+- NOME                    >>> {Nome_pesado}
+- Número de identificação >>> \033[32m{idetificacao_mais_pesado}\033[m N°
+- PESO                    >>> \033[31m{boi_mais_pesado}\033[m (kg)
           
           
-          -------->        Boi mais LEVE            <-------\n
-          - NOME                    >>> {Nome_magro}
-          - Número de identificação >>> \033[32m{idetificacao_mais_magro}\033[m
-          - PESO                    >>> \033[31m{boi_mais_magro}\033[m
+-------->        Boi mais LEVE            <-------\n
+- NOME                    >>> {Nome_magro}
+- Número de identificação >>> \033[32m{idetificacao_mais_magro}\033[m N°
+- PESO                    >>> \033[31m{boi_mais_magro}\033[m (kg)
           
-            ''')
+''')
         
         
         
