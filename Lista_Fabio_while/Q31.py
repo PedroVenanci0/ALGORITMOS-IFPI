@@ -4,6 +4,9 @@
 
 
 def main():
+
+    print('teste')
+    
     numero = limites_min_max('', 1, 999)
     centena = isolando_centena(numero)
     dezena = isolando_dezena(numero)
