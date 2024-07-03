@@ -21,7 +21,7 @@ def main():
 
     elif preferencia_de_horario == 1:
 
-        horario = list(map(str, input("Informe o horário a ser convertido. ex: (hh:mm:ss:pm/am).\n>> ").split(":")))
+        horario = list(map(str, input("Informe o horário a ser convertido. ex: (hh:mm:ss pm/am).\n>> ").split(":")))
         hora, minuto, segundo, AmPm = horario
 
         if int(hora) < 23 and int(hora) >= 0 and int(minuto) < 60 and int(minuto) >= 0 and int(segundo) < 60 and int(segundo) >= 0:
@@ -30,9 +30,9 @@ def main():
                 hora = int(hora) - 12
                 print(f"Seu horário inserido corresponde a: {hora}:{minuto}:{segundo} {AmPm}")
                 
-            elif "am" in horario:
+            elif "am" in AmPm.lower():
                 print(f"Seu horário inserido corresponde a: {hora}:{minuto}:{segundo} {AmPm}")
-                
+
         else:
                 print("Valor Invalido")
             

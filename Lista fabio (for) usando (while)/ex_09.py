@@ -6,15 +6,12 @@ def main():
     limite_superior = int(input('Informe o limite superior: '))
 
     contador = 0
-
     resultado = 0
 
     while resultado < limite_superior:
 
         if (limite_inferior + contador) % 2 == 0:
-           
            resultado = limite_inferior + contador
-           
            print (resultado)
         
         contador += 1    

@@ -37,7 +37,6 @@ def main():
     valor_criterio_C_serasa_02 = criteiro_C_total_Serasa_02 * (criteiro_c / 100)
 
 
-
     somatorio_serasa_01 = valor_criterio_A_serasa_01 + valor_criterio_B_serasa_01 + valor_criterio_C_serasa_01
     somatorio_serasa_02 = valor_criterio_A_serasa_02 + valor_criterio_B_serasa_02 + valor_criterio_C_serasa_02
 

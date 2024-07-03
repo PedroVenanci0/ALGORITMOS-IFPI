@@ -80,12 +80,6 @@ def main():
             deseja_sair = input('\n>> Deseja voltar para o menu (PRESSIONE ENTER): ')
             clear_screen()
 
-
-
-
-
-
-
 def calculando_produtos_e_parcelamento(valor_total, lista_produtos, valor):
 
         parcela_composta_sem_juros = valor_total / 6
@@ -109,8 +103,6 @@ PARCELAMENTO: VALOR TOTAL DA COMPRA MUITO BAIXO PARA SER PARCELADO
 PARCELAMENTO COMPOSTO EM ATÉ 6x DE {parcela_composta:.2f}
 ----------------------------------
 """)
-
-
         elif valor_total >= 30 and valor_total <= 100:
 
             parcela_30_100 = valor_total / 3

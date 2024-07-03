@@ -7,7 +7,6 @@ def main():
 >>>  NÚMEROS PARES ENTRE LIMITES <<<
 =====================================
 """)
-
     LimiteInferior = int(input('Informe um Limite Inferior: '))
     LimiteSuperior = int(input('Informe um Limite Superior: '))
 
@@ -21,7 +20,6 @@ def main():
 
 >> {filtro_pares} <<
 """)
-
 
 # outra forma de fazer:
 

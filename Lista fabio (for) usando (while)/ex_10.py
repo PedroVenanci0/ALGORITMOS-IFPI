@@ -10,11 +10,9 @@ def main():
     resultado = 0
 
     while (resultado + 1) < limite_superior:
-
+        
         if (limite_inferior + contador) % 2 == 1:
-           
            resultado = limite_inferior + contador
-           
            print (resultado)
         
         contador += 1    

@@ -9,21 +9,16 @@ def main():
     contador = 1
 
     while numero_N * contador <= limite_inferior:
-
+        
         if numero_N * contador >= limite_inferior:
-
             multiplo = numero_N * contador
-
             print  (f'{multiplo}')
 
         contador += 1
     
     while numero_N * contador <= limite_superior:
-
         multiplo = numero_N * contador
-
         print (f'{multiplo}')
-
         contador += 1
 
     

@@ -71,17 +71,13 @@ def main():
 
 
 def calculando_valor_mes(capacidade_recomendada, valor_pago):
-
     reposição_do_mes = capacidade_recomendada * (10/100)
     
     if  reposição_do_mes > 1000:
-
        quantidade_de_vezes = (reposição_do_mes // 1000) + 1
-
        valor_mes = quantidade_de_vezes * valor_pago
     
     else:
-
         valor_mes = valor_pago
 
     return valor_mes
@@ -89,24 +85,11 @@ def calculando_valor_mes(capacidade_recomendada, valor_pago):
 def calculando_pagamento_total(capacidade_recomendada, valor_pago):
 
     quantidade_de_vezes_que_ira_pagar = capacidade_recomendada // 1000
-
     pagamento_total = quantidade_de_vezes_que_ira_pagar * valor_pago
 
     if capacidade_recomendada % 1000 != 0:
-
         pagamento_total = pagamento_total + valor_pago
 
     return pagamento_total
     
-    
-
-
-        
-
-
-
-
-
-
-
 main()

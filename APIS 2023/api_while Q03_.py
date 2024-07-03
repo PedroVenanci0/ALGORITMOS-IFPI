@@ -15,7 +15,7 @@
 import os
 import time
 
-def main():
+def main(): 
 
     porcentagem_investimento = 30+1
     taxa_juros = 1+1
@@ -56,17 +56,18 @@ def main():
     valor_investido_com_juros = 0
     anos = 0
 
+    valor_investido = (salario * (porcentagem_investimento/100))
+
     while valor_investido_com_juros < preço_objetivo:
 
-        valor_investido = (salario * (porcentagem_investimento/100))
+        valor_investido_com_juros += valor_investido 
 
-        valor_investido_com_juros += valor_investido * (taxa_juros/100) + valor_investido
+        valor_investido_com_juros *= (taxa_juros + 100) / 100
 
+      # valor_investido_com_juros += (valor_investido * (taxa_juros/100)) + valor_investido
         tempo_ate_objetivo += 1
 
         print(f'>>> SALDO NO {tempo_ate_objetivo}° MÊS: {valor_investido_com_juros:.2f}\n')
-    
-    
 
     if tempo_ate_objetivo >= 12:
 
@@ -89,7 +90,6 @@ def main():
 ----------------------------------------
 >>>> TEMPO ATE O SONHO <<<<<
 ----------------------------------------\n
-           
 =================================================================================================
 >>>> O TEMPO ATE A COMPRA DO OBJETIVO ({objetivo}) CORRESPONDE A {anos} ANOS E {meses} MESES <<<<
 =================================================================================================

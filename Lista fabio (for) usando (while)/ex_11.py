@@ -8,11 +8,9 @@ def main():
     ordem = ''
 
     while(limite_inferior <= limite_superior):
-
-        if (limite_inferior % 2 != 0) and (limite_inferior % 3 != 0) and (limite_inferior % 5 != 0):
-
-            ordem = ordem + str(limite_inferior) + ' '
         
+        if (limite_inferior % 2 != 0) and (limite_inferior % 3 != 0) and (limite_inferior % 5 != 0):
+            ordem = ordem + str(limite_inferior) + ' '
         limite_inferior += 1
     
     print (ordem)

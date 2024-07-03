@@ -20,11 +20,9 @@
 from utils import clear_screen
 
 def main():
-
     print ('>>>>> gift cards <<<<<')
-
     # flag (0) para numero_de_comrpras,nome_cliente e valor_compras
-
+    
     somatorio_vendas_totais = 0
     somatorio_cashback = 0
     contador_cashback = 0 
@@ -42,24 +40,19 @@ def main():
     valor_compras = int(input('\033[33m>>>\033[m Informe o valor da compra: '))
 
     valor_pago_pelo_cliente = calculando_valor_pago_pelo_cliente(numero_de_compras, valor_compras)
-
     cashback = calculando_caskback(numero_de_compras, valor_compras)
     
     maior_cashback = cashback
     menor_cashback = cashback
 
     while numero_de_compras != 0:
-
         valor_pago_pelo_cliente = calculando_valor_pago_pelo_cliente(numero_de_compras, valor_compras)
-
         cashback = calculando_caskback(numero_de_compras, valor_compras)
         
         if cashback > maior_cashback:
-
             maior_cashback = cashback
         
         if cashback < menor_cashback:
-
             menor_cashback = cashback
         
         contador_cashback += 1
@@ -101,29 +94,23 @@ def calculando_valor_pago_pelo_cliente(numero_compras, valor_compras):
     somatorio_vendas_individual = valor_compras * numero_compras
 
     if somatorio_vendas_individual <= 250:
-
         valor_pago_pelo_cliente = (somatorio_vendas_individual * (95/100))
 
         return valor_pago_pelo_cliente
-        
-    elif somatorio_vendas_individual > 250 and somatorio_vendas_individual <= 500:
 
+    elif somatorio_vendas_individual > 250 and somatorio_vendas_individual <= 500:
         valor_pago_pelo_cliente = (somatorio_vendas_individual * (93/100))
 
         return valor_pago_pelo_cliente
 
     elif somatorio_vendas_individual > 500 and somatorio_vendas_individual <= 750:
-
         valor_pago_pelo_cliente = (somatorio_vendas_individual * (92/100))
 
         return valor_pago_pelo_cliente
         
     elif somatorio_vendas_individual > 750:
-
         sobra = (somatorio_vendas_individual - 750)
-
         sobra_com_desconto = (sobra * 75/100)
-
         valor_pago_pelo_cliente = (750 * (92/100)) + sobra_com_desconto
 
         return valor_pago_pelo_cliente
@@ -133,31 +120,24 @@ def calculando_caskback(numero_compras, valor_compras):
     somatorio_vendas_individual = valor_compras * numero_compras
 
     if somatorio_vendas_individual <= 250:
-
         cashback = (somatorio_vendas_individual * 5/100)
 
         return cashback
         
     elif somatorio_vendas_individual > 250 and somatorio_vendas_individual <= 500:
-
         cashback = (somatorio_vendas_individual * 5/100)
 
         return cashback
 
     elif somatorio_vendas_individual > 500 and somatorio_vendas_individual <= 750:
-
         cashback = (somatorio_vendas_individual * 5/100)
 
         return cashback
         
     elif somatorio_vendas_individual > 750:
-
         sobra = (somatorio_vendas_individual - 750)
-
         cashback_01 = (sobra * 25/100)
-
         cashback_02 = (750 * (8/100))
-
         cashback = cashback_01 + cashback_02
 
         return cashback

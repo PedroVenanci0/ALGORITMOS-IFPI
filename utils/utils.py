@@ -5,7 +5,6 @@ import time
 # Adiciona o caminho da pasta utils ao sys.path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'utils'))
 
-
 def limites_min_max(mensagem, min, max):
     numero = (int(input(mensagem)))
     if numero < min or numero > max:

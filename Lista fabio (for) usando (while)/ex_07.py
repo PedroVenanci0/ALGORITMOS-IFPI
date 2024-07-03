@@ -8,11 +8,8 @@ def main():
     contador = 0
 
     while (contador <= numero_N):
-
         somatorio += contador
-
         contador += 1
 
     print (f'A soma dos números de 1 a {numero_N} é {somatorio}')
-
 main()

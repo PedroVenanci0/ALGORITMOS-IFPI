@@ -6,7 +6,7 @@ def main():
 
     solucao = 0
 
-    contador_unitario = 0 
+    contador_unitario = 0
 
     for contador in range(1, numero_N + 1):
 
