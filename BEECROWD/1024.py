@@ -52,7 +52,6 @@ def segundo_passo(texto_codificado):
     
     return texto_invertido
 
-
 def terceiro_passo(texto_invertido):
 
     meio_da_string_truncado = len(texto_invertido) // 2

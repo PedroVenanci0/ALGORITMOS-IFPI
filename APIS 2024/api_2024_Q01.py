@@ -31,7 +31,8 @@ def main():
 
     while flag != "Y":
 
-        while len(senha) != numero_de_digitos_senha: 
+        while len(senha) != numero_de_digitos_senha:
+
 
             numero_aleatorio = random.randint(1,9)
 
