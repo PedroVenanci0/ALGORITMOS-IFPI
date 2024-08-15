@@ -59,6 +59,8 @@ def terceiro_passo(texto_invertido):
 
     for elements in range(len(texto_invertido)):
 
+        texto_invertido[elements]
+
         if elements >= meio_da_string_truncado:
             texto_codificado += chr(ord(texto_invertido[elements]) - 1)
 
