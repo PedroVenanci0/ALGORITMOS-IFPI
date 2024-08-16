@@ -2,31 +2,34 @@ import utils
 
 def main():
 
-    opcão = int(input(menu()))
+    opcao = int(input(menu()))
 
-    if opcão == 1:
+    match opcao:
+        case 1:
+            morethan20()
 
-        morethan20()
+        case 2:
+            has_no_e()
+        
+        case 3:
+            resultado = avoid()
+            print(resultado)
 
-    elif opcão == 2:
+        case 4:
+            resultado = user_only()
+            print(resultado)
 
-        has_no_e()
-    
-    elif opcão == 3:
+        case 5:
+            resultado = uses_all()
+            print(resultado)
+        
+        case 6:
+            resultado = is_abecedarian()
+            print(resultado)
+        
+        case _:
+            print("Opção inválida.")
 
-        resultado = avoid()
-        print(resultado)
-
-    elif opcão == 4:
-
-        resultado = user_only()
-        print(resultado)
-
-    elif opcão == 5:
-
-        resultado = uses_all()
-        print(resultado)
-    
 
 def morethan20():
 
@@ -133,25 +136,42 @@ def uses_all():
         
         
 
-def is_abecedaria():
+def is_abecedarian():
 
-    palavra_inserida = input("\nInforme a palavra > ")
-
-    for letra in palavra_inserida:
-        if 
-
+    palavras_ordenadas = []
+    arquivo = open('words.txt')  
+    
+    for linha in arquivo:
+        palavra = linha.strip()
+        
+        ordem = True
+        for i in range(len(palavra) - 1):
+            if palavra[i] > palavra[i + 1]:
+                ordem = False
+                break
+        
+        if ordem:
+            palavras_ordenadas.append(palavra)
+    
+    for elemensts in palavras_ordenadas:
+        print(elemensts)
                 
 def menu():
     opção = """
-> QUAL filtro vc deseja ser aplicado em seu arquivo: 
+===============================================
+  Qual filtro você deseja aplicar no arquivo?
+===============================================
 
-> 1 - Palavras com mais de 20 letras;           >  6 - Palavras com mais de 20 letras;
-> 2 - Palavras que nao possuem a letra 'e'      >  7 - Palavras com mais de 20 letras;
-> 3 - Palavras com mais de 20 letras;           >  8 - Palavras com mais de 20 letras;
-> 4 - Palavras com mais de 20 letras;           >  9 - Palavras com mais de 20 letras;
-> 5 - Palavras com mais de 20 letras;           > 10 - Palavras com mais de 20 letras;
+  1 - Palavras com mais de 20 letras
+  2 - Palavras que não possuem a letra 'e'
+  3 - Palavras com mais de 20 letras
+  4 - Palavras com mais de 20 letras
+  5 - Palavras com mais de 20 letras
+  6 - Palavras com mais de 20 letras
 
->> """
+===============================================
+>>> """
     return opção
+
 
 main()
