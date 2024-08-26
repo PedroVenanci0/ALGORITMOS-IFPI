@@ -30,6 +30,7 @@ def aguarde():
 
 def tabela_de_cor(): 
     cor = 'cor'
+
     print (f'''
    >>>> NÚMEROS PARA CORES DOS RESULTADOS <<<<
            
@@ -41,6 +42,9 @@ def tabela_de_cor():
            ROSA         >>>        \033[35m{cor} = 35\033[m
            AZUL CIANO   >>>        \033[36m{cor} = 36\033[m
 ''')
+    
+    while True:
+        print("Que da cu")
 
 
 def OutputColor(NameColor,argument):
@@ -55,7 +59,9 @@ def OutputColor(NameColor,argument):
         "cyan": "36m"
     }
 
-    return (f"\033[{DicionaryColor[f'{NameColor}']}{argument}\033[m")
+    Color = DicionaryColor.get(NameColor)
+
+    
 
 def cor_cinza(argumento):
     print (f'\033[30m{argumento}\033[m')

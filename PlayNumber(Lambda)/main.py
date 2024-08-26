@@ -1,5 +1,8 @@
 
 import Vetor_utils
+from utils import OutputColor, clear_screen
+
+from cores import red, reset
 
 def main():
 
@@ -14,7 +17,13 @@ def main():
         case 3:
             Valores = Vetor_utils.InserirArquivo()
             print(f"\n{Valores}")
-    
+             
+    while OpcaoMenuInicial > 3 or OpcaoMenuInicial < 0:
+
+        clear_screen()
+        print(f"\nValor Inserido {red}Invalido!!!{reset}\n")
+        OpcaoMenuInicial = int(input(Menu() + "> "))
+
     MenuGeral()
     OpcoesMenuGeral = int(input("> "))
 
