@@ -115,7 +115,7 @@ def myfilter(function, valores):
         
         ListaNova = []
 
-        for elements in  valores:
+        for elements in valores:
             if function(elements):
                 ListaNova.append(elements)
 
@@ -125,7 +125,7 @@ def myMap(function, valores):
     
     ListaNova = []
 
-    for elements in  valores:
+    for elements in valores:
         ListaNova.append(function(elements))
         
     return ListaNova
@@ -134,17 +134,7 @@ def myReduce(function, valores):
 
     ValorFinal = 0
 
-    for elements in  valores:
+    for elements in valores:
         ValorFinal = function(ValorFinal,elements)
     
     return ValorFinal
-
-def main():
-    
-    lista = [ 1, 2, 58, 345]
-
-    ListaPrinciapl = myMap(lambda x: x + x, lista)
-
-    print(ListaPrinciapl)
-
-main()
