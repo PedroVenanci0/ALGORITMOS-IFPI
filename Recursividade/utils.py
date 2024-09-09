@@ -153,6 +153,6 @@ def escrever_texto(texto):
     for elements in texto:
         print(elements, end='', flush=True)  # Exibe o caractere sem quebra de linha e força a exibição imediata
         time.sleep(delay)  # Atraso antes de exibir o próximo caractere
-    print()  # Move o cursor para a próxima linha após o texto ser exibido
+    print()
 
 main()
