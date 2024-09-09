@@ -1,3 +1,8 @@
+from utils import escrever_texto
+from utils import clear_screen
+import time
+import random
+
 def UtilizandoRecursividade():
 
     print("""
@@ -18,7 +23,8 @@ _________________________________
 
     match opcoes:
         case 1:
-            FatorialRecursividade()
+            valor = FatorialRecursividade()
+            print(valor)
         case 2:
             FibonacciRecursividade()
         case 3:
@@ -32,12 +38,62 @@ _________________________________
         case 7:
             ContarVogaisConsoantesRecursividade()
 
-
 def FatorialRecursividade():
-    pass
+        
+    texto = "\nInforme um valor: "
+    escrever_texto(texto)
+    N = int(input("> "))
+
+    start_time = time.time()
+
+    ValorFinal = FatorialProcessamento(N)
+
+    end_time = time.time()
+    execution_time = end_time - start_time
+
+    clear_screen()
+
+    return (f"""
+        >>> Fatorial While <<<
+========================================
+O fatorial {N}!      >   {ValorFinal}
+Tempo de execução  >   {execution_time:.6f} segundos
+========================================
+""")
+
+def FatorialProcessamento (n):
+    if n == 0 or n == 1:
+        return 1
+    else:
+        return n * FatorialProcessamento(n - 1)
 
 def FibonacciRecursividade():
-    pass
+
+    texto = "\nInforme um valor: "
+    escrever_texto(texto)
+    N = int(input("> "))
+
+    primeiro_termo = 0
+    segundo_termo = 1
+
+def FibonacciProcessamento(n,primeiro_termo,segundo_termo):
+
+    if n == (n - (n-2)):
+        return
+
+    fibonacci = [primeiro_termo, segundo_termo]
+
+    start_time = time.time()
+    
+    proximo_termo = primeiro_termo + segundo_termo
+    fibonacci.append(proximo_termo)
+    
+    primeiro_termo = segundo_termo
+    segundo_termo = proximo_termo
+    
+    return sequencia_fibonacci = ", ".join(map(str, fibonacci))
+    FibonacciProcessamento(n,primeiro_termo,segundo_termo)
+
 
 def SequenciaRecursividade():
     pass
@@ -55,4 +111,4 @@ def ContarVogaisConsoantesRecursividade():
     pass
 
             
-
+UtilizandoRecursividade()
