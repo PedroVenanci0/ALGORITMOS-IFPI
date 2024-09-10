@@ -26,15 +26,20 @@ _________________________________
             valor = FatorialRecursividade()
             print(valor)
         case 2:
-            FibonacciRecursividade()
+            valor = FibonacciRecursividade()
+            print(valor)
         case 3:
-            SequenciaRecursividade()
+            valor = SequenciaRecursividade()
+            print(valor)
         case 4:
-            ProdutoSomaSucessivasRecursividade()
+            valor = ProdutoRecursividade()
+            print(valor)
         case 5:
-            ExponencialRecursividade()
+            valor = ExponencialRecursividade()
+            print(valor)
         case 6:
-            SomatorioAleatorioRecursividade()
+            valor = SomatorioAleatorioRecursividade()
+            print(valor)
         case 7:
             ContarVogaisConsoantesRecursividade()
 
@@ -73,42 +78,84 @@ def FibonacciRecursividade():
     escrever_texto(texto)
     N = int(input("> "))
 
-    primeiro_termo = 0
-    segundo_termo = 1
+def FibonacciProcessamento(n):
+    pass
 
-def FibonacciProcessamento(n,primeiro_termo,segundo_termo):
+def SequenciaProcessamento(a, b):
 
-    if n == (n - (n-2)):
-        return
-
-    fibonacci = [primeiro_termo, segundo_termo]
-
-    start_time = time.time()
-    
-    proximo_termo = primeiro_termo + segundo_termo
-    fibonacci.append(proximo_termo)
-    
-    primeiro_termo = segundo_termo
-    segundo_termo = proximo_termo
-    
-    return sequencia_fibonacci = ", ".join(map(str, fibonacci))
-    FibonacciProcessamento(n,primeiro_termo,segundo_termo)
-
+    if a > b:
+        return []
+    else:
+        return [a] + SequenciaProcessamento(a + 1, b)
 
 def SequenciaRecursividade():
-    pass
 
-def ProdutoSomaSucessivasRecursividade():
-    pass
+    texto = "\nInforme o range da Sequência de Valores (A B): "
+    escrever_texto(texto)
+    A, B = map(int, input("> ").split())
+
+    sequencia = SequenciaProcessamento(A, B)
+    return (f"A sequência de valores entre {A} e {B} é: {sequencia}")
+   
+def ProdutoRecursividadeProcessamento(a, b):
+
+    if b == 0:
+        return 0
+    elif b == 1:
+        return a
+    else:
+        return a + ProdutoRecursividadeProcessamento(a, b - 1)
+
+def ProdutoRecursividade():
+
+    texto = "Informe o primeiro número (a) e o segundo número (b): "
+    escrever_texto(texto)
+    a, b = map(int, input("> ").split())
+        
+    resultado = ProdutoRecursividadeProcessamento(a, b)
+    return(f"O produto de {a} e {b} é: {resultado}")
+
+
+def ExponencialRecursividadeProcessamento(a, b):
+
+    if b == 0:
+        return 1
+    elif b == 1:
+        return a
+    else:
+        return a * ExponencialRecursividadeProcessamento(a, b - 1)
 
 def ExponencialRecursividade():
-    pass
+
+    texto = "Informe a base (a) e o expoente (b): "
+    escrever_texto(texto)
+    a, b = map(int, input("> ").split())
+        
+    resultado = ExponencialRecursividadeProcessamento(a, b)
+    return(f"{a} elevado a {b} é: {resultado}")
+ 
+def AleatorioProcessamento(n, a, b):
+
+    if n <= 0:
+        return 0
+    else:
+        numero_aleatorio = random.randint(a, b)
+        return numero_aleatorio + AleatorioProcessamento(n - 1, a, b)
 
 def SomatorioAleatorioRecursividade():
-    pass
+
+    texto = "Informe o número de termos a serem somados: "
+    escrever_texto(texto)
+
+    n = int(input("> "))
+        
+    texto = "Informe o número inicial (a) e o número final (b): "
+    escrever_texto(texto)
+    a, b = map(int, input("> ").split())
+        
+    resultado = AleatorioProcessamento(n, a, b)
+    return (f"A soma de {n} números aleatórios entre {a} e {b} é: {resultado}")
+   
 
 def ContarVogaisConsoantesRecursividade():
     pass
-
-            
-UtilizandoRecursividade()

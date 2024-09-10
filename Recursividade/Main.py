@@ -2,11 +2,15 @@
 from utils import clear_screen
 from utils import escrever_texto
 
+import FuncionalidadesFor
+import FuncionalidadesWhile
+import FuncionalidadesRecursividade
+
 def main():
 
     clear_screen()
 
-    escrever_texto("\n> NESSA TAREFA IREMOS IMPLEMENTAR PARA AS SITUAÇÕES A SEGUIR FUNÇÕES E PROGRAMAS NAS VERSÕES A SEGUIR\nE VERIFICAREMOS O TEMPO DE EXECUÇÃO DA TAREFA ESCOLHIDA:  ")
+    escrever_texto("\n> NESSA TAREFA IREMOS IMPLEMENTAR PARA AS SITUAÇÕES A SEGUIR, FUNÇÕES E PROGRAMAS NAS VERSÕES DEMONSTRADAS ABAIXO\nE VERIFICAREMOS O TEMPO DE EXECUÇÃO DA TAREFA ESCOLHIDA:  ")
     print("\nPressione Enter para continuar...")
     input()
     print("""
@@ -23,10 +27,10 @@ _________________________________
 
     match opcoes:
         case 1:
-            UtilizandoWhile()
+            FuncionalidadesWhile.UtilizandoWhile()
         case 2:
-            UtilizandoFor()
+            FuncionalidadesFor.UtilizandoFor()
         case 3:
-            UtilizandoRecursividade()
+            FuncionalidadesRecursividade.UtilizandoRecursividade()
 
 main()
