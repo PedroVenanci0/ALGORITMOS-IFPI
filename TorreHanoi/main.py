@@ -1,4 +1,6 @@
 
+from funcionalidades import menu
+
 def main():
-    tutorial()
+    menu()
 main()
