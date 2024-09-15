@@ -264,36 +264,36 @@ def movendoItens(jogada,matriz):
         if matriz[0][0] != "":
             ItemMovido = matriz[0][0]
             matriz[0].pop(0)
-            matriz[1].insert(0, ItemMovido)
+            matriz[2].insert(0, ItemMovido)
 
     elif jogada == "RG":
         if matriz[0][0] != "":
             ItemMovido = matriz[0][0]
             matriz[0].pop(0)
-            matriz[2].insert(0, ItemMovido)
+            matriz[1].insert(0, ItemMovido)
         
     elif jogada == "GR":
-        if matriz[2][0] != "":
-            ItemMovido = matriz[2][0]
-            matriz[2].pop(0)
-            matriz[0].insert(0, ItemMovido)
-
-    elif jogada == "GB":
-        if matriz[2][0] != "":
-            ItemMovido = matriz[2][0]
-            matriz[2].pop(0)
-            matriz[1].insert(0, ItemMovido)
-    
-    elif jogada == "BG":
-        if matriz[1][0] != "" :
-            ItemMovido = matriz[1][0]
-            matriz[1].pop(0)
-            matriz[2].insert(0, ItemMovido)
-
-    elif jogada == "BR":
         if matriz[1][0] != "":
             ItemMovido = matriz[1][0]
             matriz[1].pop(0)
+            matriz[0].insert(0, ItemMovido)
+
+    elif jogada == "GB":
+        if matriz[1][0] != "":
+            ItemMovido = matriz[1][0]
+            matriz[1].pop(0)
+            matriz[2].insert(0, ItemMovido)
+    
+    elif jogada == "BG":
+        if matriz[2][0] != "" :
+            ItemMovido = matriz[2][0]
+            matriz[2].pop(0)
+            matriz[1].insert(0, ItemMovido)
+
+    elif jogada == "BR":
+        if matriz[2][0] != "":
+            ItemMovido = matriz[2][0]
+            matriz[2].pop(0)
             matriz[0].insert(0, ItemMovido)
 
     return matriz
