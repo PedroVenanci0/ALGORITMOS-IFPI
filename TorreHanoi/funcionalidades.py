@@ -305,11 +305,11 @@ def validandoFinal(matriz):
             return False
 
     for i in matriz[1]:
-        if i != "B" and i != "":
+        if i != "G" and i != "":
             return False
 
     for i in matriz[2]:
-        if i != "G" and i != "":
+        if i != "B" and i != "":
             return False
 
     return True
