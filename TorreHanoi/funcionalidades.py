@@ -1,43 +1,11 @@
-from utils import red,green,darkblue,lightblue,clear_screen
+from utils import red,green,darkblue,lightblue,clear_screen,pink,gray,yellow
 import random
 import time
+import os
 
 R = red("R")
 G = green("G")
 B = darkblue("B")
-
-def menu():
-
-    clear_screen()
-
-    print(F"""
-     > Menu Inicial <
-==========================
-          
-(1) Start Game
-(2) Tutorial
-(3) Historico de Vitorias
-(4) Pq passar o Venâncio? ❤
-          
-(0) {red("Quit Game")}
-=========================
-""")
-
-    opcoes = int(input("> "))
-
-    match opcoes:
-        case 1:
-            StartGame()
-        case 2:
-            Tutorial()
-        case 3:
-            #HistoricoVitoria()
-            pass
-        case 0:
-            clear_screen()
-            print("Fim...")
-            return
-
 
 def StartGame():
 
@@ -293,37 +261,37 @@ def MostrarTorres(MatrizTorre):
 def movendoItens(jogada,matriz):
 
     if jogada == "RB":
-        if matriz[0][0] != "" and len(matriz[1]) != 9:
+        if matriz[0][0] != "":
             ItemMovido = matriz[0][0]
             matriz[0].pop(0)
             matriz[1].insert(0, ItemMovido)
 
     elif jogada == "RG":
-        if matriz[0][0] != "" and len(matriz[2]) != 9:
+        if matriz[0][0] != "":
             ItemMovido = matriz[0][0]
             matriz[0].pop(0)
             matriz[2].insert(0, ItemMovido)
         
     elif jogada == "GR":
-        if matriz[2][0] != "" and len(matriz[0]) != 9:
+        if matriz[2][0] != "":
             ItemMovido = matriz[2][0]
             matriz[2].pop(0)
             matriz[0].insert(0, ItemMovido)
 
     elif jogada == "GB":
-        if matriz[2][0] != "" and len(matriz[1]) != 9:
+        if matriz[2][0] != "":
             ItemMovido = matriz[2][0]
             matriz[2].pop(0)
             matriz[1].insert(0, ItemMovido)
     
     elif jogada == "BG":
-        if matriz[1][0] != "" and len(matriz[2]) != 9:
+        if matriz[1][0] != "" :
             ItemMovido = matriz[1][0]
             matriz[1].pop(0)
             matriz[2].insert(0, ItemMovido)
 
     elif jogada == "BR":
-        if matriz[1][0] != "" and len(matriz[0]) != 9:
+        if matriz[1][0] != "":
             ItemMovido = matriz[1][0]
             matriz[1].pop(0)
             matriz[0].insert(0, ItemMovido)
@@ -332,19 +300,20 @@ def movendoItens(jogada,matriz):
 
 def validandoFinal(matriz):
 
-    # Verifica se a torre 0 contém apenas discos "R" ou está vazia
-    if any(disco != "R" and disco != "" for disco in matriz[0]):
-        return False
+    for i in matriz[0]:
+        if i != "R" and i != "":
+            return False
 
-    # Verifica se a torre 1 contém apenas discos "B" ou está vazia
-    if any(disco != "B" and disco != "" for disco in matriz[1]):
-        return False
+    for i in matriz[1]:
+        if i != "B" and i != "":
+            return False
 
-    # Verifica se a torre 2 contém apenas discos "G" ou está vazia
-    if any(disco != "G" and disco != "" for disco in matriz[2]):
-        return False
+    for i in matriz[2]:
+        if i != "G" and i != "":
+            return False
 
     return True
+
     
     
 def CriandoMatrizIniciante():
@@ -421,14 +390,43 @@ def FimDeJogo(TotalTimePlayer01, TotalTimePlayer02, ContadorJogadasPlayer01, Con
 
     if ContadorJogadasPlayer01 > ContadorJogadasPlayer02:
         vencedor = Player02
+        perdedor = Player01
+
+        ContadorPlayerVencedor = ContadorJogadasPlayer02
+        ContadorPlayerPerdedor = ContadorJogadasPlayer01
+
+        TempoPlayerVencedor = TotalTimePlayer02
+        TempoPlayerPerdedor = TotalTimePlayer01
+
     elif ContadorJogadasPlayer01 < ContadorJogadasPlayer02:
-        vencedor = Player02
+        vencedor = Player01
+        perdedor = Player02
+
+        ContadorPlayerVencedor = ContadorJogadasPlayer01
+        ContadorPlayerPerdedor = ContadorJogadasPlayer02
+
+        TempoPlayerVencedor = TotalTimePlayer01
+        TempoPlayerPerdedor = TotalTimePlayer02
     
     else:
         if TotalTimePlayer01 > TotalTimePlayer02:
             vencedor = Player01
+            perdedor = Player02
+
+            ContadorPlayerVencedor = ContadorJogadasPlayer01
+            ContadorPlayerPerdedor = ContadorJogadasPlayer02
+
+            TempoPlayerVencedor = TotalTimePlayer01
+            TempoPlayerPerdedor = TotalTimePlayer02
         else:
             vencedor = Player02
+            perdedor = Player01
+
+            ContadorPlayerVencedor = ContadorJogadasPlayer02
+            ContadorPlayerPerdedor = ContadorJogadasPlayer01
+
+            TempoPlayerVencedor = TotalTimePlayer02
+            TempoPlayerPerdedor = TotalTimePlayer01
 
     clear_screen()
     print(f"""
@@ -451,6 +449,39 @@ def FimDeJogo(TotalTimePlayer01, TotalTimePlayer02, ContadorJogadasPlayer01, Con
 ============================================
 """)
 
+
+    molde = """\
+    ==================================
+    Nome do Ganhador: {NomeGanhador}
+    Tempo do Ganhador: {TempoGanhador}
+    Número de Jogadas: {NúmeroJogadasGanhador}
+    ==================================
+    Perdedor: {NomePerdedor}
+    Tempo do Perdedor: {TempoPerdedor}
+    Número de Jogadas: {NúmeroJogadasPerdedor}
+    ==================================
+    """
+
+    dados = {
+
+        "NomeGanhador": f"{vencedor}",
+        "TempoGanhador": f"{TempoPlayerVencedor:.2f}",
+        "NúmeroJogadasGanhador": f"{ContadorPlayerVencedor}",
+
+        "NomePerdedor": f"{perdedor}",
+        "TempoPerdedor": f"{TempoPlayerPerdedor:.2f}",
+        "NúmeroJogadasPerdedor": f"{ContadorPlayerPerdedor}"
+    }
+
+    conteudo = molde.format(**dados)
+
+    NomeArquivo = 'HistoricoVitorias.txt'
+
+    with open(NomeArquivo, 'a') as arquivo:
+        arquivo.write(conteudo + '\n')
+
+    input("\nPressione Enter para voltar ao menu...")
+    menu()
 
 def Tutorial():
 
@@ -491,4 +522,81 @@ ________________________________________
 """)
     input("\nPressione Enter para Voltar ao Menu...")
     menu()
-menu() 
+
+def HistoricoVitoria():
+
+    NomeArquivo = "HistoricoVitorias.txt"
+
+    # Verifica se o arquivo existe
+    if os.path.exists(NomeArquivo):
+
+        with open(NomeArquivo, 'r') as arquivo:
+            conteudo = arquivo.read()
+
+        print("Histórico de Vitórias:\n")
+        print(conteudo)
+
+        input("\nPressione Enter para voltar ao Menu...")
+        menu()
+    else:
+        print(red("Nenhum Historico de Vitorias encontrado!!!"))
+        input("\nPressione Enter para voltar ao Menu...")
+        menu()
+
+def PassarVenancio():
+
+    clear_screen()
+    print(f"""
+
+            > Porquê Passar o Venâncio? <
+========================================================
+                    > PQ ELE É <
+💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓
+{red("V")} de Valente
+{green("E")} de Elegante
+{pink("N")} de Notável
+{darkblue("Â")} de Ânimo (significa energia ou disposição positiva)
+{pink("N")} de Nobre
+{lightblue("C")} de Carismático
+{red("I")} de Inspirador
+{yellow("O")} de Ousado
+💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓💓
+=========================================================
+""")
+
+
+    input("Pressione Enter para voltar ao Menu...")
+    menu()
+
+def menu():
+
+    clear_screen()
+
+    print(F"""
+     > Menu Inicial <
+==========================
+          
+(1) {lightblue("Start Game")}
+(2) {green("Tutorial")}
+(3) {yellow("Historico de Vitorias")}
+(4) {pink("Pq passar o Venâncio? ❤")}
+          
+(0) {red("Quit Game")}
+=========================
+""")
+
+    opcoes = int(input("> "))
+
+    match opcoes:
+        case 1:
+            StartGame()
+        case 2:
+            Tutorial()
+        case 3:
+            HistoricoVitoria()
+        case 4:
+            PassarVenancio()
+        case 0:
+            clear_screen()
+            print("Fim...")
+            return
