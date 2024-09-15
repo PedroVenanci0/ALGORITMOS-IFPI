@@ -59,7 +59,7 @@ def OutputColor(NameColor,argument):
     return (f"\033[{DicionaryColor[f'{NameColor}']}{argument}\033[m")
 
 
-def cinza(argumento):
+def gray(argumento):
     return (f'\033[30m{argumento}\033[m')
 
 def red(argumento):
