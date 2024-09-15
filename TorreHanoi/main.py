@@ -1,3 +1,4 @@
+
 import funcionalidades
 from utils import red,green,darkblue,lightblue,clear_screen,pink,gray,yellow
 import random
