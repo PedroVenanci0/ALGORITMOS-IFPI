@@ -1,7 +1,5 @@
 import funcionalidades
 from utils import red,green,darkblue,lightblue,clear_screen,pink,gray,yellow
-import random
-import time
 
 def menu():
 
@@ -35,6 +33,11 @@ def menu():
             clear_screen()
             print("Fim...")
             return
+        case _:
+            clear_screen()
+            print(f"{red("\nOpção Invalida, Tente Novamente!!")}")
+            input("\nPressione Enter para voltar ao menu...")
+            menu()
 
 def main():
     menu()

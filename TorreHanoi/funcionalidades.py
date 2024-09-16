@@ -21,12 +21,12 @@ def StartGame():
     
     print(f"""
 ===================================
- > Escolha o nivel de Dificuldade <
+ > Escolha o nivel de {pink("Dificuldade")} <
 ===================================
           
-(1) - Nível Iniciante
-(2) - Nível Intermediário
-(3) - Nível Avançado
+(1) - Nível {green("Iniciante")}     (Somente 1 torre com 9 itens)
+(2) - Nível {yellow("Intermediario")} (3 torres com 6 itens)
+(3) - Nível {red("Avançado")}      (3 Torres com 8 itens)
           
 ===================================
 """)
@@ -42,10 +42,16 @@ def StartGame():
             StartNivelIntermediario(Player01,Player02)
         case 3:
             StartNivelAvancado(Player01,Player02)
+        case _:
+            clear_screen()
+            print(f"{red("\nOpção Invalida, Tente Novamente!!")}")
+            input("\nPressione Enter para voltar ao Seleção de Players...")
+            StartGame()
+
             
 
 
-def StartNivelIniciante( Player01, Player02):
+def StartNivelIniciante(Player01, Player02):
 
     ContadorJogadasPlayer01 = 0
 
@@ -243,55 +249,57 @@ def StartNivelAvancado( Player01, Player02):
     
 def MostrarTorres(MatrizTorre):
 
-    num_colunas = 9
+    print(f"""
+{red("R")} {green("G")} {darkblue("B")}
+-----
+""")
+
+    NumeroItens = 9
     
-
-    for i in range(num_colunas):
+    for i in range(NumeroItens):
         linha_saida = []
-
-        for linha in MatrizTorre:
-
-            if i < len(linha):
-                linha_saida.append((linha[i]))
+        for dimensao in MatrizTorre:
+            if i < len(dimensao):
+                linha_saida.append((dimensao[i]))
             else:
-                linha_saida.append(' ')  
+                linha_saida.append('-')  
 
         print(' '.join(linha_saida))
 
 def movendoItens(jogada,matriz):
 
     if jogada == "RB":
-        if matriz[0][0] != "":
+        if matriz[0][0] != "-" and len(matriz[2]) < 9:
             ItemMovido = matriz[0][0]
             matriz[0].pop(0)
             matriz[2].insert(0, ItemMovido)
 
     elif jogada == "RG":
-        if matriz[0][0] != "":
+        if matriz[0][0] != "-" and len(matriz[1]) < 9:
             ItemMovido = matriz[0][0]
             matriz[0].pop(0)
             matriz[1].insert(0, ItemMovido)
         
     elif jogada == "GR":
-        if matriz[1][0] != "":
+        if matriz[1][0] != "-" and len(matriz[0]) < 9:
             ItemMovido = matriz[1][0]
             matriz[1].pop(0)
             matriz[0].insert(0, ItemMovido)
 
     elif jogada == "GB":
-        if matriz[1][0] != "":
+        if matriz[1][0] != "-" and len(matriz[2]) < 9:
             ItemMovido = matriz[1][0]
             matriz[1].pop(0)
             matriz[2].insert(0, ItemMovido)
     
     elif jogada == "BG":
-        if matriz[2][0] != "" :
+        if matriz[2][0] != "-" and len(matriz[1]) < 9:
             ItemMovido = matriz[2][0]
             matriz[2].pop(0)
             matriz[1].insert(0, ItemMovido)
 
     elif jogada == "BR":
-        if matriz[2][0] != "":
+        if matriz[2][0] != "-" and len(matriz[0]) < 9:
             ItemMovido = matriz[2][0]
             matriz[2].pop(0)
             matriz[0].insert(0, ItemMovido)
@@ -301,20 +309,18 @@ def movendoItens(jogada,matriz):
 def validandoFinal(matriz):
 
     for i in matriz[0]:
-        if i != "R" and i != "":
+        if i != f"{red("R")}" and i != "-":
             return False
 
     for i in matriz[1]:
-        if i != "G" and i != "":
+        if i != f"{green("G")}" and i != "-":
             return False
 
     for i in matriz[2]:
-        if i != "B" and i != "":
+        if i != f"{darkblue("B")}" and i != "-":
             return False
 
     return True
-
-    
     
 def CriandoMatrizIniciante():
 
@@ -329,14 +335,14 @@ def CriandoMatrizIniciante():
         NumeroSort = random.randint(0,15)
 
         if NumeroSort < 5:
-            MatrizTorres[0].append("R")
+            MatrizTorres[0].append(f"{red("R")}")
         elif NumeroSort < 10:
-            MatrizTorres[0].append("G")
+            MatrizTorres[0].append(f"{green("G")}")
         else:
-            MatrizTorres[0].append("B")
+            MatrizTorres[0].append(f"{darkblue("B")}")
 
-        MatrizTorres[1].append("")
-        MatrizTorres[2].append("") 
+        MatrizTorres[1].append("-")
+        MatrizTorres[2].append("-") 
     
     return MatrizTorres
 
@@ -349,16 +355,17 @@ def CriandoMatrizIntermediario():
 ]
 
     while len(MatrizTorres[0]) < 6 or len(MatrizTorres[1]) < 6 or len(MatrizTorres[2]) < 6:
-        NumeroSortTorre = random.randint(0, 2)  # Escolher aleatoriamente uma das três torres
+        
+        NumeroSortTorre = random.randint(0, 2)
         NumeroSortitem = random.randint(0, 15)
 
-        if len(MatrizTorres[NumeroSortTorre]) < 6:  # Verificar se a torre escolhida tem menos de 6 itens
+        if len(MatrizTorres[NumeroSortTorre]) < 6:  
             if NumeroSortitem < 5:
-                MatrizTorres[NumeroSortTorre].append("R")
+                MatrizTorres[NumeroSortTorre].append(f"{red("R")}")
             elif NumeroSortitem < 10:
-                MatrizTorres[NumeroSortTorre].append("G")
+                MatrizTorres[NumeroSortTorre].append(f"{green("G")}")
             else:
-                MatrizTorres[NumeroSortTorre].append("B")
+                MatrizTorres[NumeroSortTorre].append(f"{darkblue("B")}")
 
     return MatrizTorres
 
@@ -377,11 +384,11 @@ def CriandoMatrizAvancado():
 
         if len(MatrizTorres[NumeroSortTorre]) < 8:  
             if NumeroSortitem < 5:
-                MatrizTorres[NumeroSortTorre].append("R")
+                MatrizTorres[NumeroSortTorre].append(f"{red("R")}")
             elif NumeroSortitem < 10:
-                MatrizTorres[NumeroSortTorre].append("G")
+                MatrizTorres[NumeroSortTorre].append(f"{green("G")}")
             else:
-                MatrizTorres[NumeroSortTorre].append("B")
+                MatrizTorres[NumeroSortTorre].append(f"{darkblue("B")}")
 
     return MatrizTorres
     
@@ -492,8 +499,12 @@ def Tutorial():
 > Bem Vindo a Torre de Hanoi ({red("R")}{green("G")}{darkblue("B")}) <
 ====================================
 
+================
+> Sobre o jogo <
+================
+
 - Hanói Rogério Gordinho Bonito --> Hanói RGB
-- Você esta prestes a Iniciar um Maravilhoso e complexo jogo de pilhas, Boa sorte !!!
+- Você esta prestes a Iniciar um Maravilhoso e complexo jogo de Torres, Boa sorte !!!
 
 =============
 > controles <
@@ -510,20 +521,21 @@ def Tutorial():
  > Regras <
 ============
 
-- Somente é possível inserir e remover itens no Topo das Torres.
-
 - Vence o Jogador que completar todas as Torres com seus itens correspondentes em menos jogadas
+
+- Somente é possível inserir e remover itens no Topo das Torres.
 
 - Em caso de Empate, a vitoria será daquele que completou em menos tempo
 
-- O jogo Encerrar ao alocar corretamente os itens 
+- O jogo Encerrar ao alocar corretamente os itens em suas Torres
 ________________________________________
-
 """)
     input("\nPressione Enter para Voltar ao Menu...")
     menu()
 
 def HistoricoVitoria():
+
+    clear_screen()
 
     NomeArquivo = "HistoricoVitorias.txt"
 
