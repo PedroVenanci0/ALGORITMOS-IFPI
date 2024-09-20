@@ -245,90 +245,80 @@ def StartNivelAvancado( Player01, Player02):
             MostrarTorres(MatrizTorres)
     
     FimDeJogo(TotalTimePlayer01, TotalTimePlayer02, ContadorJogadasPlayer01, ContadorJogadasPlayer02, Player01, Player02)
-    
-    
-def MostrarTorres(MatrizTorre):
 
-    print(f"""
-{red("R")} {green("G")} {darkblue("B")}
------
-""")
 
-    NumeroItens = 9
+def MostrarTorres(matriz):
+    altura_max = 9  
+
+    print("Estado atual das torres:")
     
-    for i in range(NumeroItens):
-        linha_saida = []
-        for dimensao in MatrizTorre:
-            if i < len(dimensao):
-                linha_saida.append((dimensao[i]))
-            else:
-                linha_saida.append('-')  
+    for i in range(altura_max - 1, -1, -1):
+        # Exibe os itens das torres, alinhados
+        print(f"      {matriz[0][i] if i < len(matriz[0]) else '-'}                     "
+              f"{matriz[1][i] if i < len(matriz[1]) else '-'}                  "
+              f"{matriz[2][i] if i < len(matriz[2]) else '-'}")
+        
 
-        print(' '.join(linha_saida))
+    print(F"{red("Torre Vermelha")}          {green("Torre Verde")}       {darkblue("Torre Azul")}")
+    print("-" * 30)
 
 def movendoItens(jogada,matriz):
 
     if jogada == "RB":
-        if matriz[0][0] != "-" and len(matriz[2]) < 9:
-            ItemMovido = matriz[0][0]
-            matriz[0].pop(0)
-            matriz[2].insert(0, ItemMovido)
+        if not VerificacaoTorreVazia(matriz, 0):
+            ItemMovido = matriz[0][-1]
+            matriz[0].pop()
+            matriz[2].append(ItemMovido)
 
-    elif jogada == "RG":
-        if matriz[0][0] != "-" and len(matriz[1]) < 9:
-            ItemMovido = matriz[0][0]
-            matriz[0].pop(0)
-            matriz[1].insert(0, ItemMovido)
+    if jogada == "RG":
+        if not VerificacaoTorreVazia(matriz, 0):
+            ItemMovido = matriz[0][-1]
+            matriz[0].pop()
+            matriz[1].append(ItemMovido)
         
-    elif jogada == "GR":
-        if matriz[1][0] != "-" and len(matriz[0]) < 9:
-            ItemMovido = matriz[1][0]
-            matriz[1].pop(0)
-            matriz[0].insert(0, ItemMovido)
+    if jogada == "GR":
+        if not VerificacaoTorreVazia(matriz, 1):
+            ItemMovido = matriz[1][-1]
+            matriz[1].pop()
+            matriz[0].append(ItemMovido)
 
-    elif jogada == "GB":
-        if matriz[1][0] != "-" and len(matriz[2]) < 9:
-            ItemMovido = matriz[1][0]
-            matriz[1].pop(0)
-            matriz[2].insert(0, ItemMovido)
+    if jogada == "GB":
+        if not VerificacaoTorreVazia(matriz, 1):
+            ItemMovido = matriz[1][-1]
+            matriz[1].pop()
+            matriz[2].append(ItemMovido)
     
-    elif jogada == "BG":
-        if matriz[2][0] != "-" and len(matriz[1]) < 9:
-            ItemMovido = matriz[2][0]
-            matriz[2].pop(0)
-            matriz[1].insert(0, ItemMovido)
+    if jogada == "BG":
+        if not VerificacaoTorreVazia(matriz, 2):
+            ItemMovido = matriz[2][-1]
+            matriz[2].pop()
+            matriz[1].append(ItemMovido)
 
-    elif jogada == "BR":
-        if matriz[2][0] != "-" and len(matriz[0]) < 9:
-            ItemMovido = matriz[2][0]
-            matriz[2].pop(0)
-            matriz[0].insert(0, ItemMovido)
+    if jogada == "BR":
+        if not VerificacaoTorreVazia(matriz, 2):
+            ItemMovido = matriz[2][-1]
+            matriz[2].pop()
+            matriz[0].append(ItemMovido)
+
 
     return matriz
 
-def validandoFinal(matriz):
 
-    for i in matriz[0]:
-        if i != f"{red("R")}" and i != "-":
+def VerificacaoTorreVazia(matriz, torreAtual):
+
+    for elements in matriz[torreAtual]:
+        if elements in [f"{red("R")}", f"{green("G")}", f"{darkblue("B")}"]:
             return False
-
-    for i in matriz[1]:
-        if i != f"{green("G")}" and i != "-":
-            return False
-
-    for i in matriz[2]:
-        if i != f"{darkblue("B")}" and i != "-":
-            return False
-
     return True
-    
+  
 def CriandoMatrizIniciante():
 
     MatrizTorres = [
         [],
         [],
         []
-]
+]   
+    contador = 0
 
     for i in range(9):
 
@@ -340,9 +330,6 @@ def CriandoMatrizIniciante():
             MatrizTorres[0].append(f"{green("G")}")
         else:
             MatrizTorres[0].append(f"{darkblue("B")}")
-
-        MatrizTorres[1].append("-")
-        MatrizTorres[2].append("-") 
     
     return MatrizTorres
 
@@ -392,6 +379,22 @@ def CriandoMatrizAvancado():
 
     return MatrizTorres
     
+def validandoFinal(matriz):
+
+    for i in matriz[0]:
+        if i != f"{red("R")}":
+            return False
+
+    for i in matriz[1]:
+        if i != f"{green("G")}":
+            return False
+
+    for i in matriz[2]:
+        if i != f"{darkblue("B")}":
+            return False
+
+    return True
+
 def FimDeJogo(TotalTimePlayer01, TotalTimePlayer02, ContadorJogadasPlayer01, ContadorJogadasPlayer02,Player01,Player02):
 
 

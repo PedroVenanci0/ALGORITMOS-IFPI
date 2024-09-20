@@ -33,11 +33,6 @@ def menu():
             clear_screen()
             print("Fim...")
             return
-        case _:
-            clear_screen()
-            print(f"{red("\nOpção Invalida, Tente Novamente!!")}")
-            input("\nPressione Enter para voltar ao menu...")
-            menu()
 
 def main():
     menu()
