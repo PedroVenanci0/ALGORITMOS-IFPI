@@ -34,6 +34,10 @@ def menu():
             clear_screen()
             print("Fim...")
             return
+        case _:
+            menu()
+
+        
 
 def main():
     menu()
