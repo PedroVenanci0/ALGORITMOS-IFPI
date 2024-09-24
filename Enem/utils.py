@@ -130,3 +130,4 @@ def escrever_texto(texto):
         time.sleep(delay)  # Atraso antes de exibir o próximo caractere
     print()
 
+
