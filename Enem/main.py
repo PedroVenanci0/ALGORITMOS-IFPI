@@ -1,5 +1,22 @@
+import funcionalidades as func
+
+def ler_arquivo():
+
+    arquivo = open("enem2014.txt.csv", encoding='cp1252')
+
+    matriz = []
+
+    for linha in arquivo:
+        linha = linha.strip() 
+        valores = linha.split(';')  
+        matriz.append(valores) 
+    
+    return matriz
 
 def menu():
+
+    matriz = ler_arquivo()
+    
     print("""
 
     > ENEM POR ESCOLA - 2014 < 
@@ -24,6 +41,7 @@ def menu():
     
     try:
         opcao = int(input("> "))
+
     except ValueError:
         print("\nErro: Por favor, insira um número válido.")
         input("\nPressione Enter para voltar ao menu...")
@@ -31,25 +49,30 @@ def menu():
 
     match opcao:
         case 1:
-            top_brasil()
+            func.top_brasil(matriz)
         case 2:
-            top_brasil_area()
+            func.top_brasil_area(matriz)
         case 3:
-            top_estado()
+            func.top_estado(matriz)
         case 4:
-            top_estado_publica_provada()
+            func.top_estado_publica_privada(matriz)
         case 5:
-            media_nacional()
+            func.media_nacional(matriz)
         case 6:
-            melhor_escola()
+            pass
+            #melhor_escola()
         case 7:
-            lista_escolas_estado_renda()
+            pass
+            #lista_escolas_estado_renda()
         case 8:
-            escola_por_nome()
+            pass
+            #escola_por_nome()
         case 9:
-            ranking_por_estado()
+            pass
+            #ranking_por_estado()
         case 10:
-            ranking_por_regiao()
+            pass
+            #ranking_por_regiao()
         case 0:
             print("fim...")
             return
@@ -57,6 +80,7 @@ def menu():
             print("\nInforme um número correspondente as opções!!!")
             input("\npressione Enter para voltar ao menu...")
             menu()
+
 
 def main():
     menu()
