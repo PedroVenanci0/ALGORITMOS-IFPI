@@ -1,4 +1,5 @@
 import funcionalidades as func
+import utils
 
 def ler_arquivo():
 
@@ -14,16 +15,15 @@ def ler_arquivo():
     return matriz
 
 def menu():
-
+    utils.clear_screen()
     matriz = ler_arquivo()
-    
-    print("""
+    print(f"""
 
-    > ENEM POR ESCOLA - 2014 < 
+    {utils.lightblue("> ENEM POR ESCOLA - 2014 <")} 
 =====================================
             
        > Menu de Consulta <
--------------------------------------  
+{utils.lightblue("-------------------------------------")}
 1 - Top N Brasil (todas as áreas)
 2 - Top N Brasil por Área
 3 - Top N por Estado
@@ -36,7 +36,7 @@ def menu():
 10 - Ranking ENEM por Região do País
           
 0 - sair
---------------------------------------
+{utils.lightblue("-------------------------------------")}
 """)   
     
     try:
@@ -59,20 +59,15 @@ def menu():
         case 5:
             func.media_nacional(matriz)
         case 6:
-            pass
-            #melhor_escola()
+            func.melhor_escola(matriz)
         case 7:
-            pass
-            #lista_escolas_estado_renda()
+            func.lista_escolas_estado_renda(matriz)
         case 8:
-            pass
-            #escola_por_nome()
+            func.escola_por_nome(matriz)
         case 9:
-            pass
-            #ranking_por_estado()
+            func.ranking_por_estado(matriz)
         case 10:
-            pass
-            #ranking_por_regiao()
+            func.ranking_por_regiao(matriz)
         case 0:
             print("fim...")
             return
@@ -80,7 +75,6 @@ def menu():
             print("\nInforme um número correspondente as opções!!!")
             input("\npressione Enter para voltar ao menu...")
             menu()
-
 
 def main():
     menu()
